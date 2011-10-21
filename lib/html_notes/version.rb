@@ -1,4 +1,4 @@
-module HtmlNotes
+module HTMLNotes
   module Version
     MAJOR = '0'
     MINOR = '1'

@@ -4,7 +4,7 @@ require "html_notes/version"
 
 Gem::Specification.new do |s|
   s.name        = "html_notes"
-  s.version     = HtmlNotes::Version::STRING
+  s.version     = HTMLNotes::Version::STRING
   s.authors     = ["Rafael Macedo"]
   s.email       = ["macedo.rafaelfernandes@gmail.com"]
   s.homepage    = "http://github.com/rafaelmacedo/html_notes"
