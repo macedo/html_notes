@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.authors     = ["Rafael Macedo"]
   s.email       = ["macedo.rafaelfernandes@gmail.com"]
   s.homepage    = "http://github.com/rafaelmacedo/html_notes"
-  s.summary     = "An interface html to views annotations in source files"
+  s.summary     = "An interface html to view annotations in source files"
   s.description = s.summary
 
   s.rubyforge_project = "html_notes"
