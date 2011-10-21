@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+  <head>
+    <meta charset='UTF-8' />
+    <title>Output of HTML Notes </title>
+  </head>
+  <body>
+    <h1>html_notes output</h1>
+    <p>
+      <% if @rows.empty? %>
+        No notations found.
+      <% else %>
+        Found <%= @rows.size %> notations.
+      <% end %>
+    </p>
+    <ul>
+      <% @notation_names.each do |notation| %>
+        <li><input type="checkbox" value="<%= notation %>" /><%= notation %></li>
+      <% end %>
+    </ul>
+    <table>
+      <tr>
+        <th>Filename</th>
+        <th>Line Number</th>
+        <th>Notation</th>
+        <th>Text</th>
+      </tr>
+      <% @rows.each do |row| %>
+        <tr>
+          <td><%= row.file %></td>
+          <td><%= row.line %></td>
+          <td><%= row.notation %></td>
+          <td><%= row.text %></td>
+        </tr>
+      <% end %>
+    </table>
+  </body>
+</html>

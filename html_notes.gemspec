@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   # specify any dependencies here; for example:
+  s.add_dependency "notes", "~> 0.0.2"
+  s.add_dependency "erubis"
   s.add_development_dependency "rspec", "~> 2.6.0"
-  # s.add_runtime_dependency "rest-client"
 end
