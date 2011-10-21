@@ -1,38 +1,97 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html>
-  <head>
-    <meta charset='UTF-8' />
-    <title>Output of HTML Notes </title>
-  </head>
-  <body>
-    <h1>html_notes output</h1>
-    <p>
-      <% if @rows.empty? %>
-        No notations found.
-      <% else %>
-        Found <%= @rows.size %> notations.
-      <% end %>
-    </p>
-    <ul>
-      <% @notation_names.each do |notation| %>
-        <li><input type="checkbox" value="<%= notation %>" /><%= notation %></li>
-      <% end %>
-    </ul>
-    <table>
-      <tr>
-        <th>Filename</th>
-        <th>Line Number</th>
-        <th>Notation</th>
-        <th>Text</th>
+<head>
+  <meta charset='UTF-8' />
+  <title>Output of HTML Notes </title>
+  <style type="text/css">
+      body {
+          color: #333;
+          background: #eee;
+          padding: 0 20px;
+      }
+      h1 {
+          color: #4E4E4E;
+      }
+      p {
+          margin: 5px 0;
+      }
+      table {
+          background: white;
+          border: 1px solid #666;
+          border-collapse: collapse;
+          margin: 10px 0;
+          font-size: 14px;
+      }
+      table th, table td {
+          padding: 4px;
+          border: 1px solid #D0D0D0;
+      }
+      table th {
+          background-color: #DFC;
+          color: #337022;
+      }
+      table td.filename {
+          color: #ED1556;
+      }
+      table tr:hover {
+          background-color: #FFFFC0;
+      }
+      ul {
+          clear: both;
+          display: inline-block;
+          padding: 0;
+          margin: 0;
+      }
+      ul li {
+          list-style: none;
+          float: left;
+      }
+  </style>
+</head>
+<body>
+<h1>html_notes output</h1>
+<p>
+  <% if @rows.empty? %>
+      No notations found.
+  <% else %>
+      Found <%= @rows.size %> notations.
+  <% end %>
+</p>
+<ul>
+  <% @notation_names.each do |notation| %>
+      <li><input type="checkbox" value="<%= notation.strip %>" /><%= notation.strip %></li>
+  <% end %>
+</ul>
+<table>
+  <tr>
+    <th>Filename</th>
+    <th>Line Number</th>
+    <th>Notation</th>
+    <th>Text</th>
+  </tr>
+  <% @rows.each do |row| %>
+      <tr class="<%= row.notation.strip %>">
+        <td><%= row.file %></td>
+        <td><%= row.line %></td>
+        <td><%= row.notation %></td>
+        <td><%= row.text %></td>
       </tr>
-      <% @rows.each do |row| %>
-        <tr>
-          <td><%= row.file %></td>
-          <td><%= row.line %></td>
-          <td><%= row.notation %></td>
-          <td><%= row.text %></td>
-        </tr>
-      <% end %>
-    </table>
-  </body>
+  <% end %>
+</table>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.4/jquery.min.js"></script>
+<script type="text/javascript">
+    $(function() {
+        $('ul li').show();
+        $('input[type=checkbox]').prop('checked', true).click(function() {
+            if ($(this).attr('checked')) {
+                $(this).prop('checked', true);
+                $('.'+$(this).val()).show();
+            } else {
+                $(this).prop('checked', false);
+                $('.'+$(this).val()).hide();
+            }
+        });
+    });
+</script>
+</body>
 </html>
